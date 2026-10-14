@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <rect width="100" height="100" rx="16" fill="#03121A" stroke="#06B6D4" stroke-width="3"/>
+  <!-- Flask Body -->
+  <path d="M44 20H56V34L72 62C75 67 71 74 65 74H35C29 74 25 67 28 62L44 34V20Z" fill="#04202C" stroke="#06B6D4" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- Fluid Level -->
+  <path d="M32 58L38 48L62 48L68 58C71 63 68 70 62 70H38C32 70 29 63 32 58Z" fill="#06B6D4" fill-opacity="0.35"/>
+  <!-- Bubbles -->
+  <circle cx="46" cy="58" r="3" fill="#67E8F9"/>
+  <circle cx="56" cy="52" r="2" fill="#67E8F9"/>
+  <circle cx="42" cy="64" r="2" fill="#67E8F9"/>
+  <!-- Bottom Role Tag -->
+  <text x="50" y="88" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="900" letter-spacing="1.5" fill="#06B6D4" text-anchor="middle">SYNTH-03 // SCIENTIST</text>
+</svg>

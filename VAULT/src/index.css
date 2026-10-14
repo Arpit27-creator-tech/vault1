@@ -1,0 +1,1217 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  :root {
+    --vault-primary: #10B981;
+    --vault-accent: #F59E0B;
+    --background: 154 50% 6%;
+    --foreground: 0 0% 100%;
+    --card: 155 45% 12%;
+    --card-foreground: 0 0% 100%;
+    --popover: 155 45% 12%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 160 84% 45%;
+    --primary-foreground: 154 50% 6%;
+    --secondary: 38 92% 52%;
+    --secondary-foreground: 154 50% 6%;
+    --muted: 155 30% 20%;
+    --muted-foreground: 145 35% 80%;
+    --accent: 199 89% 52%;
+    --accent-foreground: 154 50% 6%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 154 45% 18%;
+    --input: 154 45% 20%;
+    --ring: 160 84% 45%;
+    --radius: 12px;
+  }
+  html, body {
+    background-color: #06120E;
+    color: #CFE8DC;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.01em;
+    overflow-x: clip;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  input, textarea, [contenteditable="true"] {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Chakra Petch', sans-serif;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+  }
+  button, input, select, textarea {
+    border-radius: 10px;
+    touch-action: manipulation;
+  }
+  a, [role="button"] {
+    touch-action: manipulation;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   V.A.U.L.T — Refined Tactical Layered Design System
+   Separated Layers: #06120E deep background, #0B2A1F surface,
+   #CFE8DC body text, #FFFFFF headlines, crisp #34D399 border accents
+   ───────────────────────────────────────────────────────────── */
+:root {
+  --vault-bg: #06120E;
+  --vault-surface: #0B2A1F;
+  --vault-card: rgba(16, 185, 129, 0.08);
+  --vault-card-border: rgba(52, 211, 153, 0.25);
+  --vault-text-body: #CFE8DC;
+  --vault-text-headline: #FFFFFF;
+  --vault-primary-cta: #F59E0B;
+  --vault-primary-cta-end: #FB923C;
+  --vault-secondary: #10B981;
+  --vault-highlight-cyan: #22D3EE;
+  --vault-highlight-amber: #FBBF24;
+  --vault-highlight-lime: #A3E635;
+  --vault-highlight-violet: #C084FC;
+
+  --clay-bg-panel: linear-gradient(145deg, rgba(11, 42, 31, 0.94) 0%, rgba(6, 26, 19, 0.95) 100%);
+  --clay-bg-card: linear-gradient(145deg, rgba(11, 42, 31, 0.88) 0%, rgba(6, 26, 19, 0.92) 100%);
+  --clay-bg-elevated: linear-gradient(145deg, rgba(16, 56, 40, 0.92) 0%, rgba(8, 32, 23, 0.95) 100%);
+  --clay-bg-modal: linear-gradient(145deg, rgba(11, 42, 31, 0.96) 0%, rgba(6, 24, 18, 0.98) 100%);
+  --clay-bg-inset: rgba(4, 18, 13, 0.85);
+
+  --clay-shadow-card: 0 10px 30px rgba(0, 0, 0, 0.45), inset 1px 1px 2px rgba(255, 255, 255, 0.12);
+  --clay-shadow-panel: 0 14px 40px rgba(0, 0, 0, 0.55), inset 1px 1px 2px rgba(255, 255, 255, 0.14);
+  --clay-shadow-modal: 0 24px 60px rgba(0, 0, 0, 0.75), inset 1px 1px 3px rgba(255, 255, 255, 0.18);
+  --clay-shadow-btn: 0 4px 14px rgba(0, 0, 0, 0.35), inset 1px 1px 2px rgba(255, 255, 255, 0.35);
+  --clay-shadow-btn-hover: 0 6px 20px rgba(0, 0, 0, 0.45), inset 1px 1px 2px rgba(255, 255, 255, 0.45);
+  --clay-shadow-btn-active: 0 2px 6px rgba(0, 0, 0, 0.25), inset 2px 2px 4px rgba(0, 0, 0, 0.60);
+  --clay-shadow-input: inset 2px 2px 5px rgba(0, 0, 0, 0.60), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --clay-shadow-badge: 0 2px 6px rgba(0, 0, 0, 0.25);
+
+  --clay-border: rgba(52, 211, 153, 0.25);
+}
+
+.clay-panel,
+.forest-glass,
+.glass-panel {
+  background: var(--clay-bg-panel) !important;
+  backdrop-filter: blur(20px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  border: 1px solid var(--clay-border) !important;
+  border-radius: 24px !important;
+  box-shadow: var(--clay-shadow-panel) !important;
+  position: relative;
+}
+
+.clay-card,
+.forest-card,
+.glass-card {
+  background: var(--clay-bg-card) !important;
+  backdrop-filter: blur(12px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
+  border: 1px solid var(--clay-border) !important;
+  border-radius: 20px !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 12px 36px rgba(0, 0, 0, 0.45) !important;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s ease,
+              border-color 0.25s ease,
+              background 0.25s ease !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .clay-card:hover,
+  .forest-card:hover,
+  .glass-card:hover {
+    transform: translateY(-2px) !important;
+    border-color: rgba(52, 211, 153, 0.45) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.16),
+      0 16px 44px rgba(0, 0, 0, 0.55),
+      0 0 25px rgba(16, 185, 129, 0.18) !important;
+    background: var(--clay-bg-elevated) !important;
+  }
+}
+
+@keyframes headline-sweep {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.headline-sweep-badge {
+  background: linear-gradient(90deg, #10B981 0%, #6EE7B7 35%, #FFFFFF 50%, #6EE7B7 65%, #10B981 100%);
+  background-size: 250% 100%;
+  animation: headline-sweep 5s ease-in-out infinite;
+}
+
+@keyframes firefly-float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) scale(0.85);
+    opacity: 0.25;
+  }
+  33% {
+    transform: translateY(-18px) translateX(12px) scale(1.15);
+    opacity: 0.85;
+  }
+  66% {
+    transform: translateY(-30px) translateX(-8px) scale(0.95);
+    opacity: 0.5;
+  }
+}
+
+.firefly-particle {
+  animation: firefly-float ease-in-out infinite;
+}
+
+@keyframes terminal-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.terminal-cursor {
+  animation: terminal-blink 1s step-end infinite;
+}
+
+@keyframes soft-pulse-beacon {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.55);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.9);
+  }
+}
+
+@keyframes soft-pulse-amber {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 8px rgba(245, 158, 11, 0.4);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.7);
+  }
+}
+
+.pulse-beacon-red {
+  animation: soft-pulse-beacon 2s ease-in-out infinite;
+}
+
+.pulse-badge-locked {
+  animation: soft-pulse-amber 2.4s ease-in-out infinite;
+}
+
+.clay-modal,
+.glass-modal {
+  background: var(--clay-bg-modal) !important;
+  backdrop-filter: blur(28px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(150%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.22) !important;
+  border-radius: 28px !important;
+  box-shadow: var(--clay-shadow-modal) !important;
+}
+
+/* Claymorphic Tactile Buttons (Bright & Punchy) */
+.clay-btn,
+.neo-btn-emerald,
+.neo-btn,
+.glass-btn {
+  background: linear-gradient(145deg, #10B981 0%, #059669 100%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+  border-radius: 16px !important;
+  box-shadow:
+    5px 8px 18px rgba(0, 0, 0, 0.35),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.55),
+    inset -3px -3px 6px rgba(2, 44, 28, 0.5) !important;
+  transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  color: #02140D !important;
+  font-weight: 800 !important;
+  touch-action: manipulation !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .clay-btn:hover,
+  .neo-btn-emerald:hover,
+  .neo-btn:hover,
+  .glass-btn:hover {
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow:
+      8px 14px 26px rgba(0, 0, 0, 0.40),
+      inset 2px 2px 5px rgba(255, 255, 255, 0.70),
+      inset -3px -3px 6px rgba(2, 44, 28, 0.4) !important;
+    background: linear-gradient(145deg, #34D399 0%, #10B981 100%) !important;
+  }
+}
+
+.clay-btn:active,
+.neo-btn-emerald:active,
+.neo-btn:active,
+.glass-btn:active {
+  transform: translateY(2px) scale(0.975) !important;
+  box-shadow:
+    2px 3px 6px rgba(0, 0, 0, 0.25),
+    inset 3px 3px 6px rgba(0, 0, 0, 0.60),
+    inset -1px -1px 3px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Clay Inset Inputs */
+.clay-input,
+.glass-input,
+input,
+select,
+textarea {
+  background: #041d13 !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1.5px solid rgba(16, 185, 129, 0.40) !important;
+  border-radius: 14px !important;
+  box-shadow: var(--clay-shadow-input) !important;
+  color: #FFFFFF !important;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.clay-input:focus,
+.glass-input:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none !important;
+  border-color: #10B981 !important;
+  background: #062a1b !important;
+  box-shadow:
+    inset 3px 3px 6px rgba(0, 0, 0, 0.6),
+    inset -1px -1px 3px rgba(16, 185, 129, 0.4),
+    0 0 0 3px rgba(16, 185, 129, 0.35) !important;
+}
+
+/* Role Themed Clay Surfaces (Bright & Tactile) */
+.clay-hacker,
+.glass-hacker {
+  background: linear-gradient(145deg, rgba(16, 78, 52, 0.94) 0%, rgba(8, 42, 28, 0.92) 100%) !important;
+  border: 1.5px solid rgba(110, 231, 183, 0.30) !important;
+  border-radius: 22px !important;
+  box-shadow:
+    10px 16px 32px rgba(2, 24, 16, 0.5),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.35),
+    inset -4px -4px 8px rgba(1, 20, 12, 0.55) !important;
+}
+.clay-engineer,
+.glass-engineer {
+  background: linear-gradient(145deg, rgba(110, 58, 12, 0.94) 0%, rgba(56, 28, 4, 0.92) 100%) !important;
+  border: 1.5px solid rgba(252, 211, 77, 0.30) !important;
+  border-radius: 22px !important;
+  box-shadow:
+    10px 16px 32px rgba(36, 14, 2, 0.5),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.35),
+    inset -4px -4px 8px rgba(24, 8, 2, 0.55) !important;
+}
+.clay-scientist,
+.glass-scientist {
+  background: linear-gradient(145deg, rgba(18, 76, 110, 0.94) 0%, rgba(8, 40, 60, 0.92) 100%) !important;
+  border: 1.5px solid rgba(125, 211, 252, 0.30) !important;
+  border-radius: 22px !important;
+  box-shadow:
+    10px 16px 32px rgba(3, 28, 44, 0.5),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.35),
+    inset -4px -4px 8px rgba(2, 18, 28, 0.55) !important;
+}
+.clay-crypto,
+.glass-crypto {
+  background: linear-gradient(145deg, rgba(86, 32, 130, 0.94) 0%, rgba(46, 14, 72, 0.92) 100%) !important;
+  border: 1.5px solid rgba(216, 180, 254, 0.30) !important;
+  border-radius: 22px !important;
+  box-shadow:
+    10px 16px 32px rgba(30, 8, 48, 0.5),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.35),
+    inset -4px -4px 8px rgba(18, 4, 30, 0.55) !important;
+}
+
+/* Clay Role Buttons (Bright & Punchy) */
+.clay-btn-amber,
+.neo-btn-gold {
+  background: linear-gradient(145deg, #F59E0B 0%, #D97706 100%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+  border-radius: 16px !important;
+  color: #02140D !important;
+  font-weight: 800 !important;
+  box-shadow:
+    5px 8px 18px rgba(0, 0, 0, 0.35),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.55),
+    inset -3px -3px 6px rgba(69, 26, 3, 0.5) !important;
+}
+.clay-btn-amber:hover,
+.neo-btn-gold:hover {
+  background: linear-gradient(145deg, #FBBF24 0%, #F59E0B 100%) !important;
+}
+.clay-btn-coral,
+.neo-btn-coral {
+  background: linear-gradient(145deg, #EF4444 0%, #DC2626 100%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+  border-radius: 16px !important;
+  color: #FFFFFF !important;
+  font-weight: 800 !important;
+  box-shadow:
+    5px 8px 18px rgba(0, 0, 0, 0.35),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.55),
+    inset -3px -3px 6px rgba(69, 10, 15, 0.5) !important;
+}
+.clay-btn-coral:hover,
+.neo-btn-coral:hover {
+  background: linear-gradient(145deg, #F87171 0%, #EF4444 100%) !important;
+}
+
+/* Pillowy Clay Badges & Status Pills */
+.clay-pill,
+.clay-badge,
+.badge-curved {
+  border-radius: 9999px !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.22) !important;
+  box-shadow: var(--clay-shadow-badge) !important;
+}
+
+/* Transform hard neo-brutalist borders into soft clay bevels */
+[class*="border-[#03140C]"],
+[class*="border-[#020C07]"] {
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  border-radius: 18px;
+}
+
+/* Transform hard drop shadows into tactile 3D clay elevation */
+[class*="shadow-["][class*="_#020C07]"],
+[class*="shadow-["][class*="_#03140C]"] {
+  box-shadow:
+    8px 14px 28px rgba(0, 0, 0, 0.45),
+    inset 2.5px 2.5px 5px rgba(255, 255, 255, 0.24),
+    inset -3.5px -3.5px 8px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Clay Header & Sidebar */
+header[class*="bg-[#071E14]"] {
+  background: rgba(8, 36, 25, 0.90) !important;
+  backdrop-filter: blur(24px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(150%) !important;
+  border-bottom: 1.5px solid rgba(16, 185, 129, 0.35) !important;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.45),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.3),
+    inset 0 2px 3px rgba(255, 255, 255, 0.20) !important;
+}
+
+aside[class*="bg-[#061E14]"],
+aside[class*="bg-[#071E14]"] {
+  background: rgba(6, 30, 20, 0.90) !important;
+  backdrop-filter: blur(24px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(150%) !important;
+  border-right: 1.5px solid rgba(16, 185, 129, 0.35) !important;
+  box-shadow:
+    8px 0 24px rgba(0, 0, 0, 0.45),
+    inset -3px 0 6px rgba(0, 0, 0, 0.3),
+    inset 1px 0 3px rgba(255, 255, 255, 0.20) !important;
+}
+
+/* Claymorphic Nested Inner Containers & Metric Blocks (Bright, Clean Tint) */
+div[class*="bg-[#020B06]"],
+div[class*="bg-[#03150D]"],
+div[class*="bg-[#051C12]"],
+div[class*="bg-[#04160E]"],
+div[class*="bg-[#042416]"] {
+  background: rgba(10, 42, 29, 0.85) !important;
+  backdrop-filter: blur(14px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(150%) !important;
+  border: 1px solid rgba(16, 185, 129, 0.25) !important;
+  border-radius: 18px !important;
+  box-shadow:
+    4px 6px 14px rgba(0, 0, 0, 0.3),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.18),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Modal and Overlay Background */
+.fixed.inset-0.bg-black\/80,
+.fixed.inset-0.bg-black\/75,
+.fixed.inset-0.bg-black\/70,
+.fixed.inset-0.bg-black\/60,
+.fixed.inset-0[class*="backdrop-blur"] {
+  backdrop-filter: blur(20px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  background-color: rgba(2, 10, 6, 0.72) !important;
+}
+
+.badge-curved, [class*="border-2"], [class*="border-[3px]"], [class*="border-[2.5px]"], [class*="border-[3.5px]"] {
+  border-radius: 16px;
+}
+table tr, table td, table th {
+  border-radius: 0px !important;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #051811;
+  border-left: 2px solid #03140C;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: #10B981;
+  border: 2px solid #03140C;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #34D399;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   V.A.U.L.T — Claymorphic Tactical Toast Notifications (Sonner)
+   Tactile 3D Puffy Clay Capsule Lozenges
+   ───────────────────────────────────────────────────────────── */
+.vault-toast,
+[data-sonner-toast] {
+  background: linear-gradient(145deg, rgba(8, 38, 26, 0.95), rgba(4, 20, 14, 0.92)) !important;
+  backdrop-filter: blur(20px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(140%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 24px !important;
+  box-shadow:
+    12px 18px 36px rgba(0, 0, 0, 0.55),
+    inset 2.5px 2.5px 5px rgba(255, 255, 255, 0.22),
+    inset -3.5px -3.5px 8px rgba(0, 0, 0, 0.5) !important;
+  font-family: 'Chakra Petch', 'Rajdhani', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  color: #F0FDF4 !important;
+  letter-spacing: 0.02em !important;
+  padding: 12px 20px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transition: opacity 0.25s ease-out, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s !important;
+  animation: toast-fade-in 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+@keyframes toast-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Auto-fade and clean disappearance in 0.5s without manual cross */
+[data-sonner-toast][data-removed="true"],
+[data-sonner-toast][data-visible="false"],
+[data-sonner-toast][data-mounted="false"] {
+  animation: none !important;
+  opacity: 0 !important;
+  transform: translateY(-8px) scale(0.95) !important;
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out !important;
+  pointer-events: none !important;
+}
+
+[data-sonner-toast][data-type="success"] {
+  background: linear-gradient(145deg, rgba(7, 54, 35, 0.96), rgba(3, 26, 17, 0.94)) !important;
+  border-color: rgba(167, 243, 208, 0.2) !important;
+  color: #F0FDF4 !important;
+  box-shadow:
+    12px 18px 36px rgba(2, 28, 18, 0.55),
+    inset 2.5px 2.5px 5px rgba(110, 231, 183, 0.3),
+    inset -3.5px -3.5px 8px rgba(1, 20, 12, 0.6) !important;
+}
+[data-sonner-toast][data-type="success"] [data-icon] {
+  color: #10B981 !important;
+}
+
+[data-sonner-toast][data-type="error"] {
+  background: linear-gradient(145deg, rgba(74, 16, 24, 0.96), rgba(34, 6, 12, 0.94)) !important;
+  border-color: rgba(254, 202, 202, 0.2) !important;
+  color: #FFF1F2 !important;
+  box-shadow:
+    12px 18px 36px rgba(45, 8, 12, 0.55),
+    inset 2.5px 2.5px 5px rgba(254, 202, 202, 0.3),
+    inset -3.5px -3.5px 8px rgba(34, 6, 12, 0.6) !important;
+}
+[data-sonner-toast][data-type="error"] [data-icon] {
+  color: #EF4444 !important;
+}
+
+[data-sonner-toast][data-type="warning"] {
+  background: linear-gradient(145deg, rgba(74, 36, 6, 0.96), rgba(34, 16, 2, 0.94)) !important;
+  border-color: rgba(252, 211, 77, 0.2) !important;
+  color: #FEF3C7 !important;
+  box-shadow:
+    12px 18px 36px rgba(36, 14, 2, 0.55),
+    inset 2.5px 2.5px 5px rgba(252, 211, 77, 0.3),
+    inset -3.5px -3.5px 8px rgba(24, 8, 2, 0.6) !important;
+}
+[data-sonner-toast][data-type="warning"] [data-icon] {
+  color: #F59E0B !important;
+}
+
+[data-sonner-toast][data-type="info"] {
+  background: linear-gradient(145deg, rgba(12, 54, 78, 0.96), rgba(4, 26, 40, 0.94)) !important;
+  border-color: rgba(186, 230, 253, 0.2) !important;
+  color: #ECFEFF !important;
+  box-shadow:
+    12px 18px 36px rgba(3, 28, 44, 0.55),
+    inset 2.5px 2.5px 5px rgba(125, 211, 252, 0.3),
+    inset -3.5px -3.5px 8px rgba(2, 18, 28, 0.6) !important;
+}
+[data-sonner-toast][data-type="info"] [data-icon] {
+  color: #0EA5E9 !important;
+}
+
+/* Hide manual close cross completely — toasts auto-fade and disappear */
+[data-sonner-toast] [data-close-button],
+[data-sonner-toast] button[aria-label="Close toast"],
+[data-sonner-toast] button[aria-label*="Close"],
+[data-close-button] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Cartoon Arcade Popup Animations
+   ───────────────────────────────────────────────────────────── */
+@keyframes cartoon-pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.82) translateY(30px) rotate(-1.5deg);
+  }
+  65% {
+    transform: scale(1.03) translateY(-6px) rotate(0.8deg);
+  }
+  85% {
+    transform: scale(0.99) translateY(2px) rotate(-0.3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes badge-bounce {
+  0%, 100% {
+    transform: rotate(-1.5deg) scale(1);
+  }
+  50% {
+    transform: rotate(-1.5deg) scale(1.06) translateY(-2px);
+  }
+}
+
+@keyframes icon-wobble {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.12) rotate(-5deg);
+  }
+  75% {
+    transform: scale(1.12) rotate(5deg);
+  }
+}
+
+.animate-cartoon-pop {
+  animation: cartoon-pop-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-badge-bounce {
+  animation: badge-bounce 2.2s ease-in-out infinite;
+}
+
+.animate-icon-wobble {
+  animation: icon-wobble 2s ease-in-out infinite;
+}
+
+/* ============================================================
+   Puzzle-solved feedback: screen shake + particle burst
+   ============================================================ */
+@keyframes screen-shake {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-3px, 2px); }
+  20% { transform: translate(3px, -2px); }
+  30% { transform: translate(-4px, -1px); }
+  40% { transform: translate(4px, 2px); }
+  50% { transform: translate(-2px, -3px); }
+  60% { transform: translate(2px, 3px); }
+  70% { transform: translate(-3px, 1px); }
+  80% { transform: translate(3px, -1px); }
+  90% { transform: translate(-1px, 2px); }
+}
+
+.animate-screen-shake {
+  animation: screen-shake 0.4s ease-in-out;
+}
+
+@keyframes particle-burst-fly {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) scale(0.2);
+    opacity: 0;
+  }
+}
+
+.particle-burst-dot {
+  animation: particle-burst-fly 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes combo-pop {
+  0% { transform: scale(0.5) rotate(-8deg); opacity: 0; }
+  50% { transform: scale(1.15) rotate(2deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.animate-combo-pop {
+  animation: combo-pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ============================================================
+   Operative ID Card: 3D Flip & Holographic Foil Effects
+   ============================================================ */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+@keyframes holo-sheen {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-holo-sheen {
+  background-size: 200% 200%;
+  animation: holo-sheen 6s ease-in-out infinite;
+}
+
+@keyframes scanline-pass {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(1000%);
+  }
+}
+
+.animate-scanline {
+  animation: scanline-pass 3.5s linear infinite;
+}
+
+/* ============================================================
+   Mobile Screen & Touch Optimizations
+   Safe Areas, Tap Manipulation, and Safari Auto-Zoom Prevention
+   ============================================================ */
+:root {
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button, a, input, select, textarea, [role="button"] {
+  touch-action: manipulation;
+}
+
+/* Enforce 16px minimum input font size on mobile to prevent iOS Safari auto-zoom */
+@media screen and (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+
+  /* Compact glass modals on mobile viewports */
+  .glass-modal {
+    max-height: calc(100dvh - 2.5rem) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+  }
+}
+
+.pb-safe {
+  padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px)) !important;
+}
+
+.pt-safe {
+  padding-top: calc(0.75rem + env(safe-area-inset-top, 0px)) !important;
+}
+
+.scroll-touch {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ============================================================
+   Fluid / Liquid Physics Motion & Compact Scroll System
+   ============================================================ */
+:root {
+  --fluid-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --fluid-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Fluid hardware acceleration defaults */
+.fluid-gpu {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+/* Silky interactive card & button transitions */
+.clay-card,
+.clay-panel,
+.forest-card,
+.glass-card,
+.fluid-card {
+  transition: transform 0.32s var(--fluid-ease),
+              box-shadow 0.32s var(--fluid-ease),
+              border-color 0.32s var(--fluid-ease),
+              background 0.32s var(--fluid-ease) !important;
+  will-change: transform, box-shadow;
+  transform: translate3d(0, 0, 0);
+}
+
+.clay-card:hover,
+.clay-panel:hover,
+.forest-card:hover,
+.glass-card:hover,
+.fluid-card:hover {
+  transform: translate3d(0, -3px, 0) scale(1.008) !important;
+  box-shadow: 16px 24px 44px rgba(0, 0, 0, 0.55),
+              inset 3px 3px 7px rgba(255, 255, 255, 0.22),
+              inset -4px -4px 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+.fluid-btn,
+button,
+a[role="button"] {
+  transition: transform 0.18s var(--fluid-ease),
+              box-shadow 0.18s var(--fluid-ease),
+              background-color 0.18s var(--fluid-ease),
+              border-color 0.18s var(--fluid-ease),
+              filter 0.18s var(--fluid-ease) !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  button:hover {
+    transform: translate3d(0, -1px, 0);
+  }
+}
+
+button:active {
+  transform: translate3d(0, 1px, 0) scale(0.98) !important;
+}
+
+/* Custom silky thin scrollbars for high-density layouts */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(2, 11, 6, 0.35);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(16, 185, 129, 0.65);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(52, 211, 153, 0.9);
+}
+
+/* Hide scrollbar for Chrome, Safari, Opera, Edge, and Firefox */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Mobile Performance & Touch Optimizations
+   ───────────────────────────────────────────────────────────── */
+
+/* Mobile backdrop-blur reduction for smooth 60fps on phones */
+@media (max-width: 768px) {
+  .clay-panel, .forest-glass, .glass-panel,
+  .clay-card, .forest-card, .glass-card,
+  .clay-modal, .glass-modal {
+    backdrop-filter: blur(10px) saturate(120%) !important;
+    -webkit-backdrop-filter: blur(10px) saturate(120%) !important;
+  }
+  .clay-modal, .glass-modal, [role="dialog"] {
+    overscroll-behavior: contain !important;
+  }
+}
+
+/* Prefers-reduced-motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-screen-shake,
+  .animate-spin,
+  .animate-pulse,
+  .animate-bounce,
+  .animate-ping {
+    animation: none !important;
+  }
+}
+
+/* Touch action helpers */
+.touch-none {
+  touch-action: none !important;
+}
+.touch-manipulation {
+  touch-action: manipulation !important;
+}
+
+/* Safe area insets for notches & home bars on mobile */
+.pb-safe {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom, 16px));
+}
+.pt-safe {
+  padding-top: max(0.5rem, env(safe-area-inset-top, 8px));
+}
+.mt-safe {
+  margin-top: env(safe-area-inset-top, 8px);
+}
+.bottom-safe {
+  bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   V.A.U.L.T — Premium Cyber & Claymorphic Hover Effects System
+   Tactile 3D Lifts, Neon Glow Rims, Holographic Sheen & Micro-Interactions
+   ───────────────────────────────────────────────────────────── */
+
+/* Holographic Sheen Sweep on Hover */
+.hover-sheen {
+  position: relative;
+  overflow: hidden;
+}
+.hover-sheen::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -70%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.28) 45%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0.28) 55%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 5;
+}
+@media (hover: hover) and (pointer: fine) {
+  .hover-sheen:hover::after {
+    opacity: 1;
+    transform: translateX(420%) rotate(25deg);
+  }
+}
+
+/* Elevated Hover Cards with Cyber Glow Rim */
+@media (hover: hover) and (pointer: fine) {
+  .clay-card:hover,
+  .forest-card:hover,
+  .glass-card:hover,
+  .fluid-card:hover {
+    transform: translateY(-4px) scale(1.01) !important;
+    border-color: rgba(16, 185, 129, 0.55) !important;
+    box-shadow:
+      0 20px 42px rgba(0, 0, 0, 0.65),
+      0 0 24px rgba(16, 185, 129, 0.25),
+      inset 2.5px 2.5px 6px rgba(255, 255, 255, 0.28),
+      inset -3px -3px 8px rgba(1, 24, 15, 0.6) !important;
+  }
+}
+
+/* Fluid Button Hover with Luminous Depth */
+@media (hover: hover) and (pointer: fine) {
+  .fluid-btn:hover {
+    transform: translateY(-2px) scale(1.02) !important;
+    filter: brightness(1.08) saturate(1.1) !important;
+    box-shadow:
+      0 8px 25px rgba(16, 185, 129, 0.35),
+      0 0 15px rgba(16, 185, 129, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.45) !important;
+  }
+}
+
+/* Interactive Squad Row Hover Lift */
+.squad-row {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.25s ease,
+              border-color 0.25s ease,
+              background 0.25s ease !important;
+}
+@media (hover: hover) and (pointer: fine) {
+  .squad-row:hover {
+    transform: translateX(3px) translateY(-2px) !important;
+    border-color: rgba(16, 185, 129, 0.75) !important;
+    box-shadow:
+      0 12px 30px rgba(0, 0, 0, 0.55),
+      0 0 20px rgba(16, 185, 129, 0.22) !important;
+    background: rgba(6, 44, 28, 0.82) !important;
+  }
+}
+
+/* Tactile Terminal Keycap Insert Buttons */
+.keycap-btn {
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.15s ease,
+              border-color 0.15s ease,
+              background-color 0.15s ease,
+              color 0.15s ease !important;
+  box-shadow: 0 2.5px 0 #020C07, inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  touch-action: manipulation;
+}
+@media (hover: hover) and (pointer: fine) {
+  .keycap-btn:hover {
+    transform: translateY(-2px) scale(1.05) !important;
+    border-color: #10B981 !important;
+    color: #10B981 !important;
+    background-color: #062b1a !important;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4), 0 2.5px 0 #020C07 !important;
+  }
+}
+.keycap-btn:active {
+  transform: translateY(2px) scale(0.96) !important;
+  box-shadow: 0 0 0 #020C07, inset 0 2px 4px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Stepper +/- Buttons Hover */
+.stepper-btn {
+  transition: all 0.18s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+@media (hover: hover) and (pointer: fine) {
+  .stepper-btn:hover {
+    transform: translateY(-1.5px) scale(1.08) !important;
+    filter: brightness(1.15) !important;
+    box-shadow: 0 0 14px rgba(16, 185, 129, 0.45) !important;
+  }
+}
+.stepper-btn:active {
+  transform: translateY(1.5px) scale(0.94) !important;
+}
+
+/* Role-Specific Cyber Hover Rims */
+@media (hover: hover) and (pointer: fine) {
+  .role-hover-hacker:hover {
+    border-color: #10B981 !important;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 24px rgba(16, 185, 129, 0.4) !important;
+    transform: translateY(-3px) scale(1.01) !important;
+  }
+  .role-hover-engineer:hover {
+    border-color: #F59E0B !important;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 24px rgba(245, 158, 11, 0.4) !important;
+    transform: translateY(-3px) scale(1.01) !important;
+  }
+  .role-hover-scientist:hover {
+    border-color: #0EA5E9 !important;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 24px rgba(14, 165, 233, 0.4) !important;
+    transform: translateY(-3px) scale(1.01) !important;
+  }
+  .role-hover-crypto:hover,
+  .role-hover-cryptographer:hover {
+    border-color: #A855F7 !important;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 24px rgba(168, 85, 247, 0.4) !important;
+    transform: translateY(-3px) scale(1.01) !important;
+  }
+}
+
+/* Nav Pill / Icon Hover Accent */
+.nav-pill-btn {
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+@media (hover: hover) and (pointer: fine) {
+  .nav-pill-btn:hover {
+    transform: translateY(-1.5px) scale(1.04) !important;
+    border-color: rgba(16, 185, 129, 0.65) !important;
+    color: #6EE7B7 !important;
+    box-shadow: 0 0 16px rgba(16, 185, 129, 0.3) !important;
+  }
+  .nav-pill-btn:hover svg {
+    transform: scale(1.15) !important;
+  }
+}
+.nav-pill-btn svg {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+/* Interactive Badge Pulse on Hover */
+@media (hover: hover) and (pointer: fine) {
+  .badge-hover:hover {
+    transform: translateY(-1px) scale(1.05) !important;
+    filter: brightness(1.12) !important;
+  }
+}
+
+/* ============================================================
+   DYNAMIC VAULT THEMES SYSTEM
+   Full visual palette adaptation for:
+   - Forest Ranger (default, #10B981)
+   - Ember Vault (ember, #F97316)
+   - Crimson Lockdown (crimson, #E11D48)
+   - Azure Frequency (azure, #0EA5E9)
+   - Golden Syndicate (golden, #EAB308)
+   ============================================================ */
+:root {
+  --vault-primary: #10B981;
+  --vault-primary-hover: #34D399;
+  --vault-accent: #F59E0B;
+  --vault-glow: rgba(16, 185, 129, 0.45);
+  --vault-theme-bg: #03140C;
+  --vault-theme-surface: #041C13;
+}
+
+[data-theme="ember"] {
+  --vault-primary: #F97316 !important;
+  --vault-primary-hover: #FB923C !important;
+  --vault-accent: #FBBF24 !important;
+  --vault-glow: rgba(249, 115, 22, 0.45) !important;
+  --vault-theme-bg: #180a04 !important;
+  --vault-theme-surface: #261208 !important;
+}
+
+[data-theme="crimson"] {
+  --vault-primary: #E11D48 !important;
+  --vault-primary-hover: #F43F5E !important;
+  --vault-accent: #FB7185 !important;
+  --vault-glow: rgba(225, 29, 72, 0.45) !important;
+  --vault-theme-bg: #170308 !important;
+  --vault-theme-surface: #270810 !important;
+}
+
+[data-theme="azure"] {
+  --vault-primary: #0EA5E9 !important;
+  --vault-primary-hover: #38BDF8 !important;
+  --vault-accent: #7DD3FC !important;
+  --vault-glow: rgba(14, 165, 233, 0.45) !important;
+  --vault-theme-bg: #02121e !important;
+  --vault-theme-surface: #041d30 !important;
+}
+
+[data-theme="golden"] {
+  --vault-primary: #EAB308 !important;
+  --vault-primary-hover: #FACC15 !important;
+  --vault-accent: #FDE047 !important;
+  --vault-glow: rgba(234, 179, 8, 0.45) !important;
+  --vault-theme-bg: #181202 !important;
+  --vault-theme-surface: #281f05 !important;
+}
+
+/* Dynamic theme overrides when any non-default theme is active */
+[data-theme]:not([data-theme="default"]) .bg-\[\#10B981\],
+[data-theme]:not([data-theme="default"]) .bg-emerald-500,
+[data-theme]:not([data-theme="default"]) .clay-btn-emerald,
+[data-theme]:not([data-theme="default"]) .neo-btn-emerald {
+  background-color: var(--vault-primary) !important;
+  background-image: none !important;
+  color: #02140D !important;
+}
+
+[data-theme]:not([data-theme="default"]) .text-\[\#10B981\],
+[data-theme]:not([data-theme="default"]) .text-emerald-400 {
+  color: var(--vault-primary) !important;
+}
+
+[data-theme]:not([data-theme="default"]) .border-\[\#10B981\],
+[data-theme]:not([data-theme="default"]) .border-emerald-500,
+[data-theme]:not([data-theme="default"]) .ring-\[\#10B981\] {
+  border-color: var(--vault-primary) !important;
+  --tw-ring-color: var(--vault-primary) !important;
+}
+
+[data-theme]:not([data-theme="default"]) .hover\:bg-\[\#10B981\]:hover,
+[data-theme]:not([data-theme="default"]) .hover\:bg-\[\#34D399\]:hover,
+[data-theme]:not([data-theme="default"]) .hover\:bg-\[\#0EA271\]:hover {
+  background-color: var(--vault-primary-hover) !important;
+}
+
+[data-theme]:not([data-theme="default"]) .hover\:border-\[\#10B981\]:hover,
+[data-theme]:not([data-theme="default"]) .hover\:border-\[\#10B981\]\/70:hover,
+[data-theme]:not([data-theme="default"]) .hover\:border-\[\#10B981\]\/60:hover,
+[data-theme]:not([data-theme="default"]) .hover\:border-\[\#10B981\]\/50:hover {
+  border-color: var(--vault-primary) !important;
+}
+
+[data-theme]:not([data-theme="default"]) .hover\:text-\[\#10B981\]:hover {
+  color: var(--vault-primary) !important;
+}
+
+[data-theme]:not([data-theme="default"]) .shadow-emerald-950\/80,
+[data-theme]:not([data-theme="default"]) .shadow-emerald-950 {
+  box-shadow: 0 8px 24px var(--vault-glow) !important;
+}
+
+[data-theme]:not([data-theme="default"]) .nav-pill-btn.text-\[\#10B981\] {
+  color: var(--vault-primary) !important;
+  background-color: color-mix(in srgb, var(--vault-primary) 25%, transparent) !important;
+  border-color: color-mix(in srgb, var(--vault-primary) 50%, transparent) !important;
+}
+
+[data-theme]:not([data-theme="default"]) input:focus,
+[data-theme]:not([data-theme="default"]) select:focus,
+[data-theme]:not([data-theme="default"]) textarea:focus {
+  border-color: var(--vault-primary) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--vault-primary) 35%, transparent) !important;
+}
+
+/* Ambient dynamic theme glow across entire app background */
+[data-theme]:not([data-theme="default"])::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 50% 12%, var(--vault-glow) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.35;
+  transition: opacity 0.4s ease, background 0.4s ease;
+}
+
+

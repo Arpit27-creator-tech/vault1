@@ -1,0 +1,28 @@
+class: VaultUser
+table: vault_users
+fields:
+  callsign: String
+  email: String
+  passwordHash: String
+  xp: int, default=0
+  level: int, default=1
+  vaultRole: String, default='Canopy Hacker'
+  rank: String, default='Junior Ranger'
+  avatarUrl: String?
+  missionsCompleted: int, default=0
+  vaultsCracked: int, default=0
+  alarmsTripped: int, default=0
+  winRate: double, default=100.0
+  fastestTime: String, default='--'
+  csMastery: int, default=75
+  physicsMastery: int, default=70
+  chemMastery: int, default=70
+  mathMastery: int, default=75
+  badges: List<String>?
+indexes:
+  vault_users_email_unique:
+    fields: email
+    unique: true
+  vault_users_callsign_unique:
+    fields: callsign
+    unique: true

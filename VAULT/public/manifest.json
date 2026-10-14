@@ -1,0 +1,38 @@
+{
+  "name": "V.A.U.L.T — Educational Heist Platform",
+  "short_name": "V.A.U.L.T",
+  "description": "Real-time role-based multiplayer educational heist platform. Assemble your squad and solve synchronous STEM missions.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#051811",
+  "theme_color": "#051811",
+  "categories": ["education", "games"],
+  "icons": [
+    {
+      "src": "/icons/Icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/Icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/Icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/Icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

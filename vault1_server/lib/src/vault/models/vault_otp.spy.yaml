@@ -1,0 +1,9 @@
+class: VaultOtp
+table: vault_otps
+fields:
+  email: String
+  code: String
+  expiresAt: DateTime
+indexes:
+  vault_otps_email_idx:
+    fields: email

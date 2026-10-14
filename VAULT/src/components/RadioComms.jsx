@@ -1,0 +1,170 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { Radio, Send, Mic, MicOff, Headphones, VolumeX, PhoneCall, PhoneOff } from 'lucide-react';
+import { heistAudio } from './HeistAudioEngine';
+
+export default function RadioComms({ 
+  messages = [], 
+  onSendMessage, 
+  activeRole = 'hacker',
+  voiceConnected = false,
+  micMuted = false,
+  isDeafened = false,
+  onToggleVoice,
+  onToggleMic,
+  onToggleDeafen,
+  isSpeaking = false,
+  unreadCount = 0
+}) {
+  const [inputText, setInputText] = useState('');
+  const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!inputText.trim()) return;
+
+    heistAudio.playRadioSquelch();
+    onSendMessage(inputText.trim(), activeRole);
+    setInputText('');
+  };
+
+  const handleQuickMacro = (text) => {
+    heistAudio.playRadioSquelch();
+    onSendMessage(text, activeRole);
+  };
+
+  return (
+    <div className="bg-[#051C12] border border-emerald-800/40 rounded-xl p-4 space-y-3 shadow-md">
+      {/* Header with Title & Voice Comms Quick Controls */}
+      <div className="flex justify-between items-center pb-2 border-b border-emerald-900/50">
+        <div className="flex items-center space-x-2">
+          <Radio className="w-4 h-4 text-[#10B981]" />
+          <span className="font-bold text-xs uppercase tracking-wider text-slate-200">
+            Squad Radio Stream
+          </span>
+          {unreadCount > 0 && (
+            <span className="bg-red-500 text-white text-[9px] font-mono font-bold px-1.5 py-0.5 rounded-full animate-pulse shadow-sm">
+              +{unreadCount}
+            </span>
+          )}
+        </div>
+
+        {/* Live Voice Comms Bar */}
+        <div className="flex items-center space-x-1.5">
+          {onToggleVoice && (
+            <button
+              type="button"
+              onClick={onToggleVoice}
+              className={`p-1.5 rounded-lg border text-[10px] flex items-center space-x-1 transition-all ${
+                voiceConnected
+                  ? 'bg-emerald-950/80 border-[#10B981] text-[#10B981]'
+                  : 'bg-[#020B06] border-slate-700 text-slate-400 hover:text-emerald-400'
+              }`}
+              title={voiceConnected ? "Disconnect Voice Comms" : "Connect Voice Comms"}
+            >
+              {voiceConnected ? <PhoneOff className="w-3 h-3 text-red-400" /> : <PhoneCall className="w-3 h-3" />}
+              <span className="font-mono text-[9px] hidden sm:inline">
+                {voiceConnected ? 'VOICE ON' : 'VOICE OFF'}
+              </span>
+            </button>
+          )}
+
+          {voiceConnected && onToggleMic && (
+            <button
+              type="button"
+              onClick={onToggleMic}
+              className={`p-1.5 rounded-lg border transition-all ${
+                micMuted
+                  ? 'bg-red-950/80 border-red-700 text-red-400'
+                  : isSpeaking
+                  ? 'bg-emerald-900 border-[#10B981] text-emerald-300 ring-1 ring-[#10B981]'
+                  : 'bg-[#020B06] border-emerald-800 text-[#10B981]'
+              }`}
+              title={micMuted ? "Unmute Mic" : "Mute Mic"}
+            >
+              {micMuted ? <MicOff className="w-3 h-3 text-red-400" /> : <Mic className="w-3 h-3" />}
+            </button>
+          )}
+
+          {voiceConnected && onToggleDeafen && (
+            <button
+              type="button"
+              onClick={onToggleDeafen}
+              className={`p-1.5 rounded-lg border transition-all ${
+                isDeafened
+                  ? 'bg-purple-950/80 border-purple-700 text-purple-400'
+                  : 'bg-[#020B06] border-emerald-900 text-slate-400 hover:text-white'
+              }`}
+              title={isDeafened ? "Undeafen Audio" : "Deafen Audio"}
+            >
+              {isDeafened ? <VolumeX className="w-3 h-3 text-purple-400" /> : <Headphones className="w-3 h-3" />}
+            </button>
+          )}
+
+          <span className={`text-[10px] font-mono px-2 py-0.5 rounded border ${
+            voiceConnected 
+              ? 'text-[#10B981] bg-[#020B06] border-emerald-900/50' 
+              : 'text-slate-400 bg-[#020B06] border-emerald-900/50'
+          }`}>
+            {voiceConnected ? 'Live Mesh' : 'Mesh Ready'}
+          </span>
+        </div>
+      </div>
+
+      <div className="h-40 overflow-y-auto space-y-2 bg-[#020B06] p-3 rounded-lg border border-emerald-950 font-mono text-[11px]">
+        {messages.map((msg, i) => (
+          <div key={i} className="leading-snug">
+            <span className="text-slate-500 text-[10px] mr-1.5">[{msg.time}]</span>
+            <span className={`font-semibold mr-1.5 ${
+              msg.role === 'hacker' ? 'text-[#10B981]' :
+              msg.role === 'engineer' ? 'text-[#F59E0B]' :
+              msg.role === 'scientist' ? 'text-[#0EA5E9]' :
+              msg.role === 'cryptographer' ? 'text-[#A855F7]' : 'text-emerald-400'
+            }`}>
+              {msg.sender}:
+            </span>
+            <span className="text-slate-200">{msg.text}</span>
+          </div>
+        ))}
+        <div ref={messagesEndRef} />
+      </div>
+
+      <div className="flex flex-wrap gap-1.5">
+        <button
+          type="button"
+          onClick={() => handleQuickMacro("Transmitting clue to your cockpit now!")}
+          className="bg-[#020B06] text-emerald-300 text-[10px] px-2 py-1 rounded border border-emerald-900/60 hover:bg-[#10B981] hover:text-[#02140D] transition-colors"
+        >
+          📢 Transmitting Clue
+        </button>
+        <button
+          type="button"
+          onClick={() => handleQuickMacro("Recalibrating, hold the lock!")}
+          className="bg-[#020B06] text-emerald-300 text-[10px] px-2 py-1 rounded border border-emerald-900/60 hover:bg-[#10B981] hover:text-[#02140D] transition-colors"
+        >
+          ⏳ Recalibrating
+        </button>
+      </div>
+
+      <form onSubmit={handleSubmit} className="flex gap-2">
+        <input
+          type="text"
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+          placeholder={`Message as ${activeRole}...`}
+          className="flex-1 bg-[#020B06] border border-emerald-900/60 rounded-lg px-3 py-2 text-slate-200 placeholder-slate-500 text-xs focus:border-[#10B981] outline-none"
+        />
+        <button
+          type="submit"
+          className="bg-[#10B981] text-[#02140D] font-bold px-3.5 py-2 rounded-lg text-xs hover:bg-[#10B981] transition-colors flex items-center space-x-1"
+        >
+          <Send className="w-3.5 h-3.5" />
+          <span>Send</span>
+        </button>
+      </form>
+    </div>
+  );
+}
